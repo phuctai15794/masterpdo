@@ -1348,7 +1348,8 @@ class Functions
 
         if ($files) {
             foreach ($files as $file) {
-                if (is_file($file)) {
+                $filename = basename($file);
+                if (is_file($file) && $filename != 'index.txt') {
                     if ($now - filemtime($file) >= $seconds) {
                         unlink($file);
                     }
@@ -1365,7 +1366,8 @@ class Functions
         $files = glob(rtrim($dir, '/') . "/*");
         if ($files) {
             foreach ($files as $file) {
-                if (is_file($file)) {
+                $filename = basename($file);
+                if (is_file($file) && $filename != 'index.txt') {
                     if (!filesize($file)) {
                         unlink($file);
                     }
